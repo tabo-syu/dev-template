@@ -25,27 +25,28 @@ force push や直接 push を確実に防ぐのは、このブランチ保護で
 
 ## 3. AI レビューを有効にする
 
-`.github/workflows/ai-review.yml` は、API キーを登録するまで何もしない。
+`.github/workflows/ai-review.yml` は、トークンを登録するまで何もしない。
+Claude のサブスクリプション（Pro / Max / Team / Enterprise）で動かす。API の料金はかからない。
 
-### かんたんな方法
-
-リポジトリで Claude Code を開き、`/install-github-app` を実行する。
-GitHub App のインストールと Secret の登録を案内してくれる。
-
-### 手動で設定する
+### 手順
 
 1. [Claude GitHub App](https://github.com/apps/claude) をリポジトリにインストールする。
-2. Settings → Secrets and variables → Actions で `ANTHROPIC_API_KEY` を登録する。
-
-Claude のサブスクリプションで認証する場合は、`claude setup-token` で作ったトークンを
-`CLAUDE_CODE_OAUTH_TOKEN` として登録し、workflow の `anthropic_api_key` の行を
-`claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}` に変える。
-`HAS_KEY` の行も同じ Secret 名に合わせる。
+2. 手元で `claude setup-token` を実行して、トークンを作る。
+3. Settings → Secrets and variables → Actions で、`CLAUDE_CODE_OAUTH_TOKEN` として登録する。
 
 ### 注意
 
+- PR のたびに、プランの利用枠を消費する。手元の Claude Code と同じ枠である。
+- トークンは作った本人のサブスクリプションに紐づき、長期間有効である。漏らさない。
 - fork からの PR では Secret が渡らないため、レビューは実行されない。
-- 実行のたびに API の利用料がかかる。
+- 使わない場合は、`ai-review.yml` を削除する。手元の `/self-review` だけでもレビューできる。
+
+### API キーで動かす場合
+
+チームで共有するリポジトリでは、個人のトークンより API キーが向いている。
+`ANTHROPIC_API_KEY` を登録し、workflow の `claude_code_oauth_token` の行を
+`anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}` に変える。
+`HAS_TOKEN` の行も同じ Secret 名に合わせる。実行のたびに API の料金がかかる。
 
 ## 4. CODEOWNERS を確認する
 
