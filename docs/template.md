@@ -22,7 +22,7 @@
 | `.claude/skills/` | `verify`（検証）と `self-review`（PR 前の確認） |
 | `.devcontainer/` | Go と Claude Code が入った開発コンテナ |
 | `.github/workflows/ci.yml` | PR と main で `make check` を実行 |
-| `.github/workflows/ai-review.yml` | PR を Claude がレビュー（API キー登録後に動く） |
+| `.github/workflows/ai-review.yml` | PR を Claude がレビュー（サブスクリプションのトークン登録後に動く） |
 | `.github/` のテンプレート | PR、Issue、CODEOWNERS、Dependabot |
 | `docs/workflow.md` | 開発の流れとリスクに応じた監督 |
 | `docs/specs/TEMPLATE.md` | 軽量な仕様テンプレート |
