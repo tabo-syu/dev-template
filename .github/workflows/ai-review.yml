@@ -29,7 +29,7 @@ jobs:
         if: env.HAS_TOKEN != 'true'
         run: echo "CLAUDE_CODE_OAUTH_TOKEN が未設定のためスキップします"
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         if: env.HAS_TOKEN == 'true'
         with:
           fetch-depth: 1
