@@ -19,7 +19,7 @@
 | `AGENTS.md` / `CLAUDE.md` | エージェントへの共有指示。`CLAUDE.md` は `AGENTS.md` を読み込むだけ |
 | `Makefile` | 検証コマンド。`make help` で一覧 |
 | `.claude/settings.json` | 権限（許可・確認・禁止）と、編集後に gofmt をかけるフック |
-| `.claude/skills/` | `verify`（検証）と `self-review`（PR 前の確認） |
+| `.claude/skills/` | `verify`（検証）。レビューは組み込みの `/code-review` を使う |
 | `.devcontainer/` | Go と Claude Code が入った開発コンテナ |
 | `.github/workflows/ci.yml` | PR と main で `make check` を実行 |
 | `.github/workflows/ai-review.yml` | PR を Claude がレビュー（API キー登録後に動く） |
