@@ -37,10 +37,5 @@ mutation: ## ミューテーションテスト（時間がかかる。重要な�
 	@command -v gremlins >/dev/null || (echo "gremlins が必要: https://gremlins.dev を参照" && exit 1)
 	gremlins unleash
 
-init: ## モジュール名を変更（例: make init MODULE_NAME=github.com/you/repo）
-	@test -n "$(MODULE_NAME)" || (echo "使い方: make init MODULE_NAME=github.com/you/repo" && exit 1)
-	@old="$(MODULE)"; \
-	go mod edit -module "$(MODULE_NAME)"; \
-	grep -rl --include='*.go' "$$old" . | xargs sed -i.bak "s#$$old#$(MODULE_NAME)#g"; \
-	find . -name '*.bak' -delete; \
-	echo "module: $$old -> $(MODULE_NAME)"
+init: ## 作成直後に一度だけ実行（例: make init MODULE_NAME=github.com/you/repo）
+	@./scripts/init.sh "$(MODULE_NAME)" "$(OWNER)"

@@ -1,6 +1,5 @@
 name: タスク
 description: 機能追加や変更。人間にもエージェントにも渡せる形で書く。
-labels: [task]
 body:
   - type: textarea
     id: goal
