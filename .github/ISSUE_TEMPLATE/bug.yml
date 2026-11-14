@@ -1,0 +1,31 @@
+name: バグ
+description: 期待どおりに動かない。
+labels: [bug]
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      description: 実行したコマンドと入力。
+      placeholder: |
+        1. `app -name " "` を実行
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する動作
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の動作
+      description: 出力やエラーメッセージを貼る。
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: バージョン
+      description: "`app -version` の出力。"

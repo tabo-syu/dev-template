@@ -1,0 +1,36 @@
+name: タスク
+description: 機能追加や変更。人間にもエージェントにも渡せる形で書く。
+labels: [task]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: 目的
+      description: 何を、なぜやるか。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受け入れ基準
+      description: 完了を判断できる条件。できるだけテストで確認できる形にする。
+      placeholder: |
+        - `app -name X` が `Hello, X!` を出力する
+        - 名前が空のとき、終了コード 1 でエラーを出す
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: 範囲外
+      description: 今回やらないこと。
+  - type: dropdown
+    id: risk
+    attributes:
+      label: リスク
+      options:
+        - 低：ドキュメント、テスト、内部の整理
+        - 中：通常の機能変更
+        - 高：認証・決済・個人データ・破壊的な操作
+    validations:
+      required: true

@@ -1,0 +1,18 @@
+# ビルド生成物
+bin/
+*.test
+*.out
+
+# 秘密情報
+.env
+.env.*
+!.env.example
+
+# 個人用の Claude Code 設定
+.claude/settings.local.json
+CLAUDE.local.md
+
+# エディタ / OS
+.idea/
+.vscode/
+.DS_Store
