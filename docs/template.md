@@ -10,7 +10,7 @@
 - **検証できること**：`make check` ひとつで、人間もエージェントも CI も同じ検証をする。
 - **指示は短く**：`AGENTS.md` には落とし穴と検証方法だけを書く。
 - **権限は設定で縛る**：指示文ではなく、設定ファイルとブランチ保護で強制する。
-- **最後は人間が承認する**：AI レビューは補助。責任は人間が持つ。
+- **最後は人間が承認する**：AI のレビューは `/self-review` で手元で行う。補助であり、責任は人間が持つ。
 
 ## 入っているもの
 
@@ -22,7 +22,6 @@
 | `.claude/skills/` | `verify`（検証）と `self-review`（PR 前の確認） |
 | `.devcontainer/` | Go と Claude Code が入った開発コンテナ |
 | `.github/workflows/ci.yml` | PR と main で `make check` を実行 |
-| `.github/workflows/ai-review.yml` | PR を Claude がレビュー（API キー登録後に動く） |
 | `.github/` のテンプレート | PR、Issue、CODEOWNERS、Dependabot |
 | `docs/workflow.md` | 開発の流れとリスクに応じた監督 |
 | `docs/specs/TEMPLATE.md` | 軽量な仕様テンプレート |

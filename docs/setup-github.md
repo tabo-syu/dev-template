@@ -23,36 +23,12 @@ Settings → Rules → Rulesets → New branch ruleset で、`main` に次を設
 エージェントの権限設定（`.claude/settings.json`）は手元での歯止めにすぎない。
 force push や直接 push を確実に防ぐのは、このブランチ保護である。
 
-## 3. AI レビューを有効にする
-
-`.github/workflows/ai-review.yml` は、API キーを登録するまで何もしない。
-
-### かんたんな方法
-
-リポジトリで Claude Code を開き、`/install-github-app` を実行する。
-GitHub App のインストールと Secret の登録を案内してくれる。
-
-### 手動で設定する
-
-1. [Claude GitHub App](https://github.com/apps/claude) をリポジトリにインストールする。
-2. Settings → Secrets and variables → Actions で `ANTHROPIC_API_KEY` を登録する。
-
-Claude のサブスクリプションで認証する場合は、`claude setup-token` で作ったトークンを
-`CLAUDE_CODE_OAUTH_TOKEN` として登録し、workflow の `anthropic_api_key` の行を
-`claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}` に変える。
-`HAS_KEY` の行も同じ Secret 名に合わせる。
-
-### 注意
-
-- fork からの PR では Secret が渡らないため、レビューは実行されない。
-- 実行のたびに API の利用料がかかる。
-
-## 4. CODEOWNERS を確認する
+## 3. CODEOWNERS を確認する
 
 `make init` が `.github/CODEOWNERS` にユーザー名を設定する。
 チームでレビューする場合は `@org/team` に書き換える。
 
-## 5. Dependabot
+## 4. Dependabot
 
 `.github/dependabot.yml` で、Go モジュールと GitHub Actions の更新 PR が週1回作られる。
 不要なら削除する。
